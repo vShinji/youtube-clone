@@ -4,6 +4,6 @@ User.destroy_all
 
 puts "Creating users..."
 
-demo = User.create!(nickname: "demo", email: "demo@demo.com", password: "demo12345")
+test = User.create!(nickname: "test", email: "test@test.com", password: "test12345")
 
 puts "Done!"
