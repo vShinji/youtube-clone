@@ -19,6 +19,10 @@ class PostsController < ApplicationController
   def edit
   end
 
+  def download
+    send_data @post.video.download, filename: @post.video.filename.to_s
+  end
+
   # POST /posts or /posts.json
   def create
     @post = Post.new(post_params)
