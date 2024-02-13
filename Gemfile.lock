@@ -182,6 +182,9 @@ GEM
     public_suffix (5.0.4)
     puma (6.4.2)
       nio4r (~> 2.0)
+    punching_bag (0.7.0)
+      railties (>= 3.2)
+      voight_kampff (>= 1.0)
     racc (1.7.3)
     rack (3.0.8)
     rack-session (2.0.0)
@@ -271,6 +274,8 @@ GEM
       railties (>= 6.0.0)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
+    voight_kampff (2.0.0)
+      rack (>= 1.4)
     warden (1.2.9)
       rack (>= 2.0.9)
     web-console (4.2.1)
@@ -305,6 +310,7 @@ DEPENDENCIES
   jbuilder
   pg (~> 1.1)
   puma (>= 5.0)
+  punching_bag
   rails (~> 7.1.2)
   sassc-rails
   selenium-webdriver

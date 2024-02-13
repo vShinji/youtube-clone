@@ -8,6 +8,7 @@ class PostsController < ApplicationController
 
   # GET /posts/1 or /posts/1.json
   def show
+    increment_views!(@post)
   end
 
   # GET /posts/new
@@ -74,5 +75,10 @@ class PostsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def post_params
       params.require(:post).permit(:title, :description, :video, :thumbnail, :user_id)
+    end
+
+    def increment_views!(post)
+      post.view_counter += 1
+      post.save
     end
 end
