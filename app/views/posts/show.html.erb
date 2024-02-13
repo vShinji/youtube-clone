@@ -4,6 +4,13 @@
   <%= @post.user.email  %>
   <%= @post.view_counter  %> views
   <%= time_ago_in_words(@post.created_at)  %> ago
+  <% if user_signed_in? %>
+    <%= button_to "like", likes_path, params: {like: {post_id:@post.id}}, method: :post  %>
+    <%= @post.likes.count  %>
+  <% else %>
+    <%= button_to "like", new_user_session_path %>
+    <%= @post.likes.count  %>
+  <% end %>
   <% if user_signed_in? && current_user.id == @post.user_id %>
     <%= link_to "Edit", edit_post_path(@post) %> |
     <%= button_to "Delete", post_path(@post), method: :delete %>

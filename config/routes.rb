@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :likes, only:[:create, :destroy]
   resources :posts
   devise_for :users
   root to: "posts#index"
