@@ -1,19 +1,15 @@
 <div id="<%= dom_id post %>">
   <p>
-    <strong>Title:</strong>
+    <video controls>
+      <source src="<%= url_for(post.video)%>" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </p>
+  <p>
     <%= post.title %>
   </p>
   <p>
     <strong>Description:</strong>
     <%= post.description %>
-  </p>
-  <p>
-    <%= image_tag(post.thumbnail, style:"height: 100px; width: 100px;") %>
-  </p>
-  <p>
-    <video controls>
-      <source src="<%= url_for(post.video)%>" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
   </p>
 </div>
