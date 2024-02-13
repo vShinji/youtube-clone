@@ -9,4 +9,5 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
 
   get "posts/:id/download", to: "posts#download", as: "download_post"
+  get "pages/uploads"
 end

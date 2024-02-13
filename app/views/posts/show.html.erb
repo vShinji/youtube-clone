@@ -3,7 +3,7 @@
 <div>
   <%= @post.user.email  %>
   <%= time_ago_in_words(@post.created_at)  %> ago
-  <% if current_user.id == @post.user_id %>
+  <% if user_signed_in? && current_user.id == @post.user_id %>
     <%= link_to "Edit", edit_post_path(@post) %> |
     <%= button_to "Delete", post_path(@post), method: :delete %>
   <% end %>
