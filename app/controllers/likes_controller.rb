@@ -1,4 +1,7 @@
 class LikesController < ApplicationController
+  def index
+  end
+
   def create
     @like = current_user.likes.new(like_params)
     if !@like.save
