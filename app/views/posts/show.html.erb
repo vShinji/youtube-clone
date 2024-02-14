@@ -7,9 +7,13 @@
   <% if user_signed_in? %>
     <%= button_to "like", likes_path, params: {like: {post_id:@post.id}}, method: :post  %>
     <%= @post.likes.count  %>
+    <%= button_to "dislike", dislikes_path, params: {dislike: {post_id:@post.id}}, method: :post  %>
+    <%= @post.dislikes.count  %>
   <% else %>
     <%= button_to "like", new_user_session_path %>
     <%= @post.likes.count  %>
+    <%= button_to "dislike", new_user_session_path %>
+    <%= @post.dislikes.count  %>
   <% end %>
   <% if user_signed_in? && current_user.id == @post.user_id %>
     <%= link_to "Edit", edit_post_path(@post) %> |

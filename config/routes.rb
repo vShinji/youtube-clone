@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :dislikes, only:[:create, :destroy]
   resources :likes, only:[:create, :destroy]
   resources :posts
   devise_for :users
