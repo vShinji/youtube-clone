@@ -1,13 +1,13 @@
 <div class="container">
   <p style="color: green"><%= notice %></p>
   <h1>Posts</h1>
-  <div id="posts">
+  <div id="posts" class="grid">
     <% @posts.each do |post| %>
-      <%= render post %>
-      <p>
-        <%= link_to "Show this post", post %>
-      </p>
+      <div class="thumbnail">
+        <%= link_to post do %>
+          <%= render post %>
+        <% end %>
+      </div>
     <% end %>
   </div>
-  <%= link_to "New post", new_post_path %>
 </div>

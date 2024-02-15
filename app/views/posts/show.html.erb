@@ -1,9 +1,19 @@
 <p style="color: green"><%= notice %></p>
-<%= render @post %>
+<video controls>
+  <source src="<%= url_for(@post.video)%>" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+<p>
+  <%= @post.title %>
+</p>
 <div>
   <%= @post.user.email  %>
   <%= @post.view_counter  %> views
   <%= time_ago_in_words(@post.created_at)  %> ago
+  <p>
+    <strong>Description:</strong>
+    <%= @post.description %>
+  </p>
   <% if user_signed_in? %>
     <%= button_to "like", likes_path, params: {like: {post_id:@post.id}}, method: :post  %>
     <%= @post.likes.count  %>
