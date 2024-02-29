@@ -3,7 +3,7 @@
   <div id="posts" class="grid">
     <% @posts.each do |post| %>
       <div class="thumbnail">
-        <%= link_to post do %>
+        <%= link_to post, class:"link" do %>
           <%= render post %>
         <% end %>
       </div>
