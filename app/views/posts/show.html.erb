@@ -23,14 +23,18 @@
           <i class="fa-regular fa-thumbs-up"></i>
         <% end %>
         <p class="me-3"><%= @post.likes.count  %></p>
-        <%= button_to "dislike", dislikes_path, params: {dislike: {post_id:@post.id}}, method: :post, class:"me-1"  %>
+        <%= button_to dislikes_path, params: {dislike: {post_id:@post.id}}, method: :post, class:"me-1" do %>
+          <i class="fa-regular fa-thumbs-down"></i>
+        <% end %>
         <p class="me-3"><%= @post.dislikes.count  %></p>
       <% else %>
         <%= button_to new_user_session_path, class:"me-1" do %>
           <i class="fa-regular fa-thumbs-up"></i>
         <% end %>
         <p class="me-3"><%= @post.likes.count  %></p>
-        <%= button_to "dislike", new_user_session_path, class:"me-1" %>
+        <%= button_to new_user_session_path, class:"me-1" do %>
+          <i class="fa-regular fa-thumbs-down"></i>
+        <% end %>
         <p class="me-3"><%= @post.dislikes.count  %></p>
       <% end %>
       <% if user_signed_in? && current_user.id == @post.user_id %>
