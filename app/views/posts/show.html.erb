@@ -51,7 +51,13 @@
   </div>
   <div>
     <% @posts.each do |post| %>
-      <% post. %>
+      <div>
+        <img src="<%= url_for(post.thumbnail) %>" alt="thumbail" class="thumbnail">
+        <p><%= post.title %></p>
+        <p><%= @post.user.email  %></p>
+        <p><%= @post.view_counter  %></p>
+        <p><%= time_ago_in_words(@post.created_at)  %> ago</p>
+      </div>
     <% end %>
   </div>
 </div>
