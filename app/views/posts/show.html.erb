@@ -52,7 +52,7 @@
   <div>
     <% @posts.each do |post| %>
       <div>
-        <img src="<%= url_for(post.thumbnail) %>" alt="thumbail" class="thumbnail">
+        <img src="<%= url_for(post.thumbnail) %>" alt="thumbail" class="thumbnail-show">
         <p><%= post.title %></p>
         <p><%= @post.user.email  %></p>
         <p><%= @post.view_counter  %></p>
