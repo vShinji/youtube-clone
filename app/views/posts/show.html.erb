@@ -1,63 +1,65 @@
 <div class="container">
-  <div>
-    <p style="color: green"><%= notice %></p>
-    <video controls class="video">
-      <source src="<%= url_for(@post.video)%>" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
-    <p class="video-title">
-      <%= @post.title %>
-    </p>
+  <div class="d-flex">
     <div>
-      <p><%= @post.user.email  %></p>
-      <div class="d-flex ">
-        <p class="me-3"><%= @post.view_counter  %> views</p>
-        <p><%= time_ago_in_words(@post.created_at)  %> ago</p>
-      </div>
-      <p>
-        <strong>Description:</strong>
-        <%= @post.description %>
+      <p style="color: green"><%= notice %></p>
+      <video controls class="video">
+        <source src="<%= url_for(@post.video)%>" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <p class="video-title">
+        <%= @post.title %>
       </p>
-      <div class="d-flex align-items-baseline">
-        <% if user_signed_in? %>
-          <%= button_to likes_path, params: {like: {post_id:@post.id}}, method: :post, class:"me-1" do %>
-            <i class="fa-regular fa-thumbs-up"></i>
+      <div>
+        <p><%= @post.user.email  %></p>
+        <div class="d-flex ">
+          <p class="me-3"><%= @post.view_counter  %> views</p>
+          <p><%= time_ago_in_words(@post.created_at)  %> ago</p>
+        </div>
+        <p>
+          <strong>Description:</strong>
+          <%= @post.description %>
+        </p>
+        <div class="d-flex align-items-baseline">
+          <% if user_signed_in? %>
+            <%= button_to likes_path, params: {like: {post_id:@post.id}}, method: :post, class:"me-1" do %>
+              <i class="fa-regular fa-thumbs-up"></i>
+            <% end %>
+            <p class="me-3"><%= @post.likes.count  %></p>
+            <%= button_to dislikes_path, params: {dislike: {post_id:@post.id}}, method: :post, class:"me-1" do %>
+              <i class="fa-regular fa-thumbs-down"></i>
+            <% end %>
+            <p class="me-3"><%= @post.dislikes.count  %></p>
+          <% else %>
+            <%= button_to new_user_session_path, class:"me-1" do %>
+              <i class="fa-regular fa-thumbs-up"></i>
+            <% end %>
+            <p class="me-3"><%= @post.likes.count  %></p>
+            <%= button_to new_user_session_path, class:"me-1" do %>
+              <i class="fa-regular fa-thumbs-down"></i>
+            <% end %>
+            <p class="me-3"><%= @post.dislikes.count  %></p>
           <% end %>
-          <p class="me-3"><%= @post.likes.count  %></p>
-          <%= button_to dislikes_path, params: {dislike: {post_id:@post.id}}, method: :post, class:"me-1" do %>
-            <i class="fa-regular fa-thumbs-down"></i>
+          <% if user_signed_in? && current_user.id == @post.user_id %>
+            <%= link_to "Edit", edit_post_path(@post) %> |
+            <%= button_to "Delete", post_path(@post), method: :delete %>
           <% end %>
-          <p class="me-3"><%= @post.dislikes.count  %></p>
-        <% else %>
-          <%= button_to new_user_session_path, class:"me-1" do %>
-            <i class="fa-regular fa-thumbs-up"></i>
+          <% if @post.video.attached? %>
+            <%= link_to "Download", download_post_path(@post), class:"link me-3"  %>
           <% end %>
-          <p class="me-3"><%= @post.likes.count  %></p>
-          <%= button_to new_user_session_path, class:"me-1" do %>
-            <i class="fa-regular fa-thumbs-down"></i>
-          <% end %>
-          <p class="me-3"><%= @post.dislikes.count  %></p>
-        <% end %>
-        <% if user_signed_in? && current_user.id == @post.user_id %>
-          <%= link_to "Edit", edit_post_path(@post) %> |
-          <%= button_to "Delete", post_path(@post), method: :delete %>
-        <% end %>
-        <% if @post.video.attached? %>
-          <%= link_to "Download", download_post_path(@post), class:"link me-3"  %>
-        <% end %>
-        <%= link_to "Back to posts", posts_path, class:"link" %>
+          <%= link_to "Back to posts", posts_path, class:"link" %>
+        </div>
       </div>
     </div>
-  </div>
-  <div>
-    <% @posts.each do |post| %>
-      <div>
-        <img src="<%= url_for(post.thumbnail) %>" alt="thumbail" class="thumbnail-show">
-        <p><%= post.title %></p>
-        <p><%= @post.user.email  %></p>
-        <p><%= @post.view_counter  %></p>
-        <p><%= time_ago_in_words(@post.created_at)  %> ago</p>
-      </div>
-    <% end %>
+    <div>
+      <% @posts.each do |post| %>
+        <div>
+          <img src="<%= url_for(post.thumbnail) %>" alt="thumbail" class="thumbnail-show">
+          <p class="show-title"><%= post.title %></p>
+          <p class="show-details"><%= @post.user.email  %></p>
+          <p class="show-details"><%= @post.view_counter  %></p>
+          <p class="show-details"><%= time_ago_in_words(@post.created_at)  %> ago</p>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>
