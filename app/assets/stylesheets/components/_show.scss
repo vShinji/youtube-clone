@@ -7,11 +7,13 @@ height: 492px;
  font-weight: 700;
 }
 .thumbnail-show {
-  width: 15em;
+  width: 12em;
+  height: 8rem;
+  border-radius: 10px;
 }
-.show-title {
-font-size: 1.4rem;
+.video-desc {
+  margin-bottom: 0.5rem;
 }
-.show-details {
-  font-size: 1.2rem;
+.desc-gray {
+  color: #9a9a9a;
 }
