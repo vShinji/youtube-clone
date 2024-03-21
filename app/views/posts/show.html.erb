@@ -20,23 +20,21 @@
         </p>
         <div class="d-flex align-items-baseline">
           <% if user_signed_in? %>
-            <%= button_to likes_path, params: {like: {post_id:@post.id}}, method: :post, class:"me-1" do %>
-              <i class="fa-regular fa-thumbs-up"></i>
+            <%= button_to likes_path, params: {like: {post_id:@post.id}}, method: :post, class:"me-1 btn-show btn-show-h" do %>
+              <p><i class="fa-regular fa-thumbs-up"></i> <%= @post.likes.count  %></p>
             <% end %>
-            <p class="me-3"><%= @post.likes.count  %></p>
-            <%= button_to dislikes_path, params: {dislike: {post_id:@post.id}}, method: :post, class:"me-1" do %>
-              <i class="fa-regular fa-thumbs-down"></i>
+            <p>|</p>
+            <%= button_to dislikes_path, params: {dislike: {post_id:@post.id}}, method: :post, class:"me-1 btn-show btn-show-h" do %>
+              <p class="ms-1"><i class="fa-regular fa-thumbs-down"></i> <%= @post.dislikes.count  %></p>
             <% end %>
-            <p class="me-3"><%= @post.dislikes.count  %></p>
           <% else %>
-            <%= button_to new_user_session_path, class:"me-1" do %>
-              <i class="fa-regular fa-thumbs-up"></i>
+            <%= button_to new_user_session_path, class:"me-1 btn-show btn-show-h" do %>
+              <p><i class="fa-regular fa-thumbs-up"></i> <%= @post.likes.count  %></p>
             <% end %>
-            <p class="me-3"><%= @post.likes.count  %></p>
-            <%= button_to new_user_session_path, class:"me-1" do %>
-              <i class="fa-regular fa-thumbs-down"></i>
+            <p>|</p>
+            <%= button_to new_user_session_path, class:"me-1 btn-show btn-show-h" do %>
+              <p class="ms-1"><i class="fa-regular fa-thumbs-down"></i> <%= @post.dislikes.count  %></p>
             <% end %>
-            <p class="me-3"><%= @post.dislikes.count  %></p>
           <% end %>
           <% if user_signed_in? && current_user.id == @post.user_id %>
             <%= link_to "Edit", edit_post_path(@post) %> |

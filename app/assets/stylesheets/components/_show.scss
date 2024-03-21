@@ -17,3 +17,25 @@ height: 492px;
 .desc-gray {
   color: #9a9a9a;
 }
+.btn-show {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 18px;
+  text-align: center;
+  text-decoration: none;
+  color: #fff;
+  background-color: transparent;
+  backface-visibility: hidden;
+  border: 0.3rem solid transparent;
+  border-radius: 3rem;
+}
+.btn-show-h {
+  border-color: transparent;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.bn38:hover {
+  background-color: #9a9a9a;
+}
