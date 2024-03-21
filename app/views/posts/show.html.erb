@@ -9,21 +9,13 @@
         <%= @post.title %>
       </p>
       <div>
-        <p><%= @post.user.email  %></p>
-        <div class="d-flex ">
-          <p class="me-3"><%= @post.view_counter  %> views</p>
-          <p><%= time_ago_in_words(@post.created_at)  %> ago</p>
-        </div>
-        <p>
-          <strong>Description:</strong>
-          <%= @post.description %>
-        </p>
         <div class="d-flex align-items-baseline">
+          <p style="margin-right: 30rem"><%= @post.user.email  %></p>
           <% if user_signed_in? %>
             <%= button_to likes_path, params: {like: {post_id:@post.id}}, method: :post, class:"me-1 btn-show btn-show-h" do %>
               <p><i class="fa-regular fa-thumbs-up"></i> <%= @post.likes.count  %></p>
             <% end %>
-            <p>|</p>
+            <p class="desc-gray">|</p>
             <%= button_to dislikes_path, params: {dislike: {post_id:@post.id}}, method: :post, class:"me-1 btn-show btn-show-h" do %>
               <p class="ms-1"><i class="fa-regular fa-thumbs-down"></i> <%= @post.dislikes.count  %></p>
             <% end %>
@@ -31,7 +23,7 @@
             <%= button_to new_user_session_path, class:"me-1 btn-show btn-show-h" do %>
               <p><i class="fa-regular fa-thumbs-up"></i> <%= @post.likes.count  %></p>
             <% end %>
-            <p>|</p>
+            <p class="desc-gray">|</p>
             <%= button_to new_user_session_path, class:"me-1 btn-show btn-show-h" do %>
               <p class="ms-1"><i class="fa-regular fa-thumbs-down"></i> <%= @post.dislikes.count  %></p>
             <% end %>
@@ -43,8 +35,15 @@
           <% if @post.video.attached? %>
             <%= link_to "Download", download_post_path(@post), class:"link me-3"  %>
           <% end %>
-          <%= link_to "Back to posts", posts_path, class:"link" %>
         </div>
+        <div class="d-flex">
+          <p class="me-3"><%= @post.view_counter  %> views</p>
+          <p><%= time_ago_in_words(@post.created_at)  %> ago</p>
+        </div>
+        <p>
+          <strong>Description:</strong>
+          <%= @post.description %>
+        </p>
       </div>
     </div>
     <div class="ms-4 mt-3">

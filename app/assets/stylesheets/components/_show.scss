@@ -26,6 +26,7 @@ height: 492px;
   text-align: center;
   text-decoration: none;
   color: #fff;
+  opacity: 0.5;
   background-color: transparent;
   backface-visibility: hidden;
   border: 0.3rem solid transparent;
@@ -36,6 +37,10 @@ height: 492px;
   transition: background-color 0.3s ease-in-out;
 }
 
-.bn38:hover {
-  background-color: #9a9a9a;
+.btn-show-h:hover {
+  opacity: 1;
+}
+.desc-video {
+  color: white;
+  opacity: 0.5;
 }
