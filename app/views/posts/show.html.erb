@@ -51,17 +51,19 @@
     </div>
     <div class="ms-4 mt-3">
       <% @posts.each do |post| %>
-        <div class="d-flex mb-2">
-          <img src="<%= url_for(post.thumbnail) %>" alt="thumbail" class="thumbnail-show">
-          <div class="d-flex flex-column ms-2">
-            <p class="video-desc"><strong><%= post.title %></strong></p>
-            <p class="video-desc desc-gray"><%= @post.user.email  %></p>
-            <div class="d-flex">
-              <p class="video-desc desc-gray"><%= @post.view_counter  %></p>
-              <p class="video-desc desc-gray"><%= time_ago_in_words(@post.created_at)  %> ago</p>
+        <%= link_to post, class:"link" do  %>
+          <div class="d-flex mb-2">
+            <img src="<%= url_for(post.thumbnail) %>" alt="thumbail" class="thumbnail-show">
+            <div class="d-flex flex-column ms-2">
+              <p class="video-desc"><strong><%= post.title %></strong></p>
+              <p class="video-desc desc-gray"><%= @post.user.email  %></p>
+              <div class="d-flex">
+                <p class="video-desc desc-gray"><%= @post.view_counter  %></p>
+                <p class="video-desc desc-gray"><%= time_ago_in_words(@post.created_at)  %> ago</p>
+              </div>
             </div>
           </div>
-        </div>
+        <% end %>
       <% end %>
     </div>
   </div>
